@@ -1,8 +1,9 @@
 package com.musashi.claymore.api.soccer.modernandroiddevelopment
 
+import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 
-class MainViewModel {
+class MainViewModel : ViewModel() {
     val repoModel: RepoModel = RepoModel()
     // observable field appartiene alla library di Databinding
     val text = ObservableField("Old data")

@@ -1,5 +1,6 @@
 package com.musashi.claymore.api.soccer.modernandroiddevelopment
 
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -13,8 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // inizializza il databinding
         binding=DataBindingUtil.setContentView(this, R.layout.activity_main)
-        // assegna il viewmodel dichiarato nell'xml
-        binding.viewModel = viewModel
+        // assegna il viewmodel dichiarato nell'xml che ora estende ViewModel
+        // non stiamo creando un nuova istanza perchè lo prendiamo da ViewModelProviders
+        // e vive fino a quando OnDestroy() non viene chiamato
+        binding.viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // esegue il binding
         binding.executePendingBindings()
 
